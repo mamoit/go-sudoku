@@ -11,7 +11,7 @@ import (
 	"strconv"
 )
 
-func Printboard(board [9][9]int) {
+func Printboard(board [][]int) {
 	for x := 0; x < 9; x++ {
 		for y := 0; y < 9; y++ {
 			if board[x][y] == 0 {
@@ -36,7 +36,7 @@ func Printboard(board [9][9]int) {
 func main() {
 	csvFile, _ := os.Open("board.csv")
 	reader := csv.NewReader(bufio.NewReader(csvFile))
-	var board [9][9]int
+	var board [][]int
 	for x := 0; x < 9; x++ {
 		line, error := reader.Read()
 		if error == io.EOF {
@@ -44,8 +44,12 @@ func main() {
 		} else if error != nil {
 			log.Fatal(error)
 		}
+		var l []int
+		board = append(board, l)
+		var value int
 		for y := 0; y < 9; y++ {
-			board[x][y], _ = strconv.Atoi(line[y])
+			value, _ = strconv.Atoi(line[y])
+			board[x] = append(board[x], value)
 		}
 	}
 
@@ -54,7 +58,7 @@ func main() {
 	Solver(board)
 }
 
-func CheckValid(board [9][9]int, x int, y int) []int {
+func CheckValid(board [][]int, x int, y int) []int {
 	var invalid []int
 
 	for a := 0; a < 9; a++ {
@@ -100,7 +104,7 @@ func CheckValid(board [9][9]int, x int, y int) []int {
 	return valid
 }
 
-func Solver(board [9][9]int) bool {
+func Solver(board [][]int) bool {
 	for x := 0; x < 9; x++ {
 		for y := 0; y < 9; y++ {
 			if board[x][y] == 0 {
