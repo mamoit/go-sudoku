@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"github.com/mamoit/go-sudoku/pkg/solver"
 )
 
 func main() {
@@ -16,9 +17,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	board := Reader(file)
+	board := solver.Reader(file)
 
-	Printboard(board)
+	solver.Printboard(board)
 	fmt.Println()
-	Solver(board)
+	solver.Solver(board)
 }
