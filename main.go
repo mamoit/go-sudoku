@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/csv"
+	"flag"
 	"fmt"
 	"io"
 	"log"
@@ -34,8 +35,17 @@ func Printboard(board [][]int) {
 }
 
 func main() {
-	csvFile, _ := os.Open("board.csv")
+	var file string
+	flag.StringVar(&file, "file", "", "Board file")
+	flag.Parse()
+
+	if file == "" {
+		flag.PrintDefaults()
+		os.Exit(1)
+	}
+	csvFile, _ := os.Open(file)
 	reader := csv.NewReader(bufio.NewReader(csvFile))
+
 	var board [][]int
 	for x := 0; x < 9; x++ {
 		line, error := reader.Read()
