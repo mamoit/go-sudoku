@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"os"
 	"github.com/mamoit/go-sudoku/pkg/solver"
+	"os"
 )
 
 func main() {
