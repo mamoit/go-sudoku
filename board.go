@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"encoding/csv"
 	"bufio"
+	"encoding/csv"
+	"fmt"
 	"io"
 	"log"
+	"os"
 	"strconv"
 )
 
