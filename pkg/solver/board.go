@@ -10,6 +10,7 @@ import (
 	"strconv"
 )
 
+// Printboard outputs a visual representation of the board to the terminal
 func Printboard(board [][]int) {
 	for x := 0; x < 9; x++ {
 		for y := 0; y < 9; y++ {
@@ -32,6 +33,7 @@ func Printboard(board [][]int) {
 	}
 }
 
+// Reader loads a board from a csv file
 func Reader(file string) [][]int {
 	csvFile, _ := os.Open(file)
 	reader := csv.NewReader(bufio.NewReader(csvFile))

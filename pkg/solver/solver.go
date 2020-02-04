@@ -4,6 +4,7 @@ import (
 	"sort"
 )
 
+// CheckValid checks if a board is valid or not
 func CheckValid(board [][]int, x int, y int) []int {
 	var invalid []int
 
@@ -19,11 +20,11 @@ func CheckValid(board [][]int, x int, y int) []int {
 	}
 
 	// Check 3x3 square
-	x_i := x / 3
-	y_i := y / 3
+	xI := x / 3
+	yI := y / 3
 
-	for i := x_i * 3; i < (x_i+1)*3; i++ {
-		for j := y_i * 3; j < (y_i+1)*3; j++ {
+	for i := xI * 3; i < (xI+1)*3; i++ {
+		for j := yI * 3; j < (yI+1)*3; j++ {
 			if board[i][j] != 0 {
 				invalid = append(invalid, board[i][j])
 			}
@@ -50,6 +51,7 @@ func CheckValid(board [][]int, x int, y int) []int {
 	return valid
 }
 
+// Solver recursively solves a sudoku board
 func Solver(board [][]int) bool {
 	for x := 0; x < 9; x++ {
 		for y := 0; y < 9; y++ {
